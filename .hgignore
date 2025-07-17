@@ -1,0 +1,15 @@
+syntax: glob
+
+# Editor files
+*.swp
+*~
+
+# Objects
+*.o
+*.a
+*.so
+
+#
+build/*
+tmp/*
+var/*

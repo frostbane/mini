@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
-#include "minIni.h"
+#include <minIni.h>
 
 #define sizearray(a)  (sizeof(a) / sizeof((a)[0]))
 

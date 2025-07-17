@@ -11,7 +11,7 @@
 #include <string>
 using namespace std ;
 
-#include "minIni.h"
+#include <minIni.h>
 
 int main(void)
 {
