@@ -19,6 +19,7 @@
 #ifndef WXMININI_H
 #define WXMININI_H
 
+#if defined __WXWINDOWS__
 #include <wx/wx.h>
 #include "minIni.h"
 
@@ -104,4 +105,5 @@ private:
   wxString iniFilename;
 };
 
+#else
 #endif /* WXMININI_H */

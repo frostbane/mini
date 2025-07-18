@@ -19,7 +19,23 @@
 #ifndef MININI_H
 #define MININI_H
 
-#include "minGlue.h"
+#if defined INI_GLUE_CCS
+    #include "glue/minGlue-ccs.h"
+#elif defined INI_GLUE_EFSL
+    #include "glue/minGlue-efsl.h"
+#elif defined INI_GLUE_FATFS
+    #include "glue/minGlue-FatFs.h"
+#elif defined INI_GLUE_FFS
+    #include "glue/minGlue-ffs.h"
+#elif defined INI_GLUE_LINUX
+    #include "glue/minGlue-Linux.h"
+#elif defined INI_GLUE_MDD
+    #include "glue/minGlue-mdd.h"
+#elif defined INI_GLUE_STDIO
+    #include "glue/minGlue-stdio.h"
+#else
+    #include "glue/minGlue.h"
+#endif
 
 #if (defined _UNICODE || defined __UNICODE__ || defined UNICODE) && !defined INI_ANSIONLY
   #include <tchar.h>
@@ -72,7 +88,7 @@ int  ini_browse(INI_CALLBACK Callback, void *UserData, const mTCHAR *Filename);
 #if defined __cplusplus
 
 #if defined __WXWINDOWS__
-	#include "wxMinIni.h"
+    #include "wxMinIni.h"
 #else
   #include <string>
 

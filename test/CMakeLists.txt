@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(minitest)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -14,8 +14,6 @@ endif ()
 # no support for the weirdos using APPLE
 
 #---------------------------------------------------------------------
-
-# add_subdirectory(../dev mini)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 file(GLOB_RECURSE SOURCE_FILES "*.cc" "test.ini")
