@@ -3,8 +3,8 @@ project(mini)
 
 #---------------------------------------------------------------------
 
-option(NDEBUG "Compile in release mode and disable asserts." OFF)
-option(INI_UNICODE "Compile with unicode support provided by the operating system." ON)
+option(NDEBUG "Build in release mode and disable asserts." ON)
+option(INI_UNICODE "Build with unicode support provided by the operating system." ON)
 option(INI_ANSIONLY "Ignore unicode support provided by the compiler. This overrides the UNICODE option." OFF)
 option(INI_GLUE "INI glue file header to use." OFF)
 option(INI_BUFFERSIZE "Maximum line length supported and maximum file path for temporary files." OFF) # 512
@@ -31,10 +31,6 @@ if (APPLE)
     set (BANANA ON)
 endif()
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set (DEBUG ON)
-endif ()
-
 if (VERBOSE)
     set (CMAKE_VERBOSE_MAKEFILE ON)
 endif ()
@@ -57,7 +53,7 @@ target_include_directories(mini PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 #---------------------------------------------------------------------
 
-if (NOT DEBUG OR NOT NDEBUG)
+if (NDEBUG)
     # release
     set (CMAKE_BUILD_TYPE "Release")
     add_definitions (-DNDEBUG)

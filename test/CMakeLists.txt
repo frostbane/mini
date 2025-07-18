@@ -7,11 +7,23 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 #---------------------------------------------------------------------
 
+option(NDEBUG "Build in release mode and disable asserts." ON)
+
+#---------------------------------------------------------------------
+
 if (WIN32)
     # operating system for the spoiled and the losers
     set (LOSER ON)
 endif ()
-# no support for the weirdos using APPLE
+
+if (APPLE)
+    # no support for the weirdos using APPLE
+    set (BANANA ON)
+endif()
+
+if (VERBOSE)
+    set (CMAKE_VERBOSE_MAKEFILE ON)
+endif ()
 
 #---------------------------------------------------------------------
 
@@ -21,6 +33,18 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCE_FILES})
 
 add_executable(minitest ${SOURCE_FILES})
 file(COPY "test.ini" DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/ )
+
+#---------------------------------------------------------------------
+
+if (NDEBUG)
+    # release
+    set (CMAKE_BUILD_TYPE "Release")
+    add_definitions (-DNDEBUG)
+else ()
+    # debug
+    set (CMAKE_BUILD_TYPE "Debug")
+    # remove_definitions (-DNDEBUG)
+endif ()
 
 #---------------------------------------------------------------------
 
